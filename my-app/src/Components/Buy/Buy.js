@@ -36,7 +36,7 @@ class Buy extends Component {
 
     changePrice = () => {
         let { data } = this.state;
-        let price = this.state.value * data.profile.price;
+        let price = this.state.value * data.price;
         this._isMounted &&  this.setState({ price });
     }
 
@@ -45,7 +45,7 @@ class Buy extends Component {
 
     handleBuy = () => {
         let { data } = this.state;
-        let price = this.state.value * data.profile.price;
+        let price = this.state.value * data.price;
         this._isMounted &&  this.setState({ price }, async () => {
             let result = await this.getBalance();
             if(result>price){
@@ -101,7 +101,7 @@ class Buy extends Component {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
-                amount: data.profile.price,
+                amount: data.price,
                 code: data.symbol,
                 purchasePrice: this.state.price,
             })
@@ -118,15 +118,17 @@ class Buy extends Component {
 
     getData = () => {
         let id = this.props.match.params.id;
-        this._isMounted &&   fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
-            let price = data.profile.price;
-            this._isMounted && this.setState({ data, price })
+        this._isMounted &&   fetch(`https://fmpcloud.io/api/v3/profile/${id}?apikey=e9c667e8d857428eecec768a1dc5ab38`)
+            .then(data => data.json()).then(data => {
+                console.log(data[0].price)
+            let price = data[0].price;
+            this._isMounted && this.setState({ data: data[0], price })
         }).catch(err => alert("something wrong please try again later"));
     }
 
     render() {
         let { data } = this.state;
-        let numberOne = Number(data.profile.price).toFixed(2);
+        let numberOne = Number(data.price).toFixed(2);
         let numberTwo = Number(this.state.price).toFixed(2);
         let splitstring = String(numberOne).split('.');
         let splitstring2 = String(numberTwo).split('.');
@@ -136,7 +138,7 @@ class Buy extends Component {
 
                 <div className="container">
                     <div><i className="glyphicon glyphicon-menu-left"></i><button onClick={() => this.props.history.goBack()}>Back</button></div>
-                    <div><p>{data.profile.companyName}</p></div>
+                    <div><p>{data.companyName}</p></div>
                 </div>
                 <div className="buy-defaut-price"><p>{splitstring[0]}.</p><span>{splitstring[1]}$</span></div>
                 <div className="buy-quantity">

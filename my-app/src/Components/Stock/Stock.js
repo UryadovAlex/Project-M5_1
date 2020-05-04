@@ -32,22 +32,13 @@ class Stock extends Component {
 
     //Function for getting datа from API and writing it to the state
     getData = () => {
-        this._isMounted && fetch("https://financialmodelingprep.com/api/v3/company/stock/list")
-            .then(res => res.text())
+        this._isMounted && fetch("https://fmpcloud.io/api/v3/stock/list?apikey=e9c667e8d857428eecec768a1dc5ab38")
+            .then(res => res.json())
             .then(data => {
-                // Пробуем распарсить полученные данные, если не получается - обрезаем
-                try {
-                    return JSON.parse(data);
-                } catch (err) {
-                    const lastRecStart = data.lastIndexOf('{');
-                    const trimmedData = data.substr(0, lastRecStart - 2) + ']}';
-                    return JSON.parse(trimmedData);
-                }
-            })
-            .then(data => {
+                //console.log(data)
                 this._isMounted && this.setState(
                     {
-                        data: data.symbolsList, lastPage: +Math.ceil(data.symbolsList.length / this.state.pageSize)
+                        data: data, lastPage: +Math.ceil(data.length / this.state.pageSize)
                     });
             })
             .catch(err => {
