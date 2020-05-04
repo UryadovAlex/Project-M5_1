@@ -67,7 +67,7 @@
 
 
 
-.buy-defaut-price {
+.sell-defaut-price {
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -75,31 +75,31 @@
 }
 
 
-.buy-defaut-price span {
+.sell-defaut-price span {
 font-size:16px;
 }
 
-.buy-quantity {
+.sell-quantity {
     display: flex;
     justify-content: center;
     flex-shrink: 15px;
   
 }
-.buy-quantity span {
+.sell-quantity span {
     width: 129px;
     text-align: center;
     font-size: 64px;
     color:#833AE0;
 }
 
-.buy-quantity button {
+.sell-quantity button {
     background: white;
     border: none;
     color:#833AE0;
     outline: none;
 }
 
-.buy-price {
+.sell-price {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -107,11 +107,11 @@ font-size:16px;
     margin-top:20px;
 }
 
-.buy-price span:nth-child(1) {
+.sell-price span:nth-child(1) {
      margin-right: 5px;
 }
 
-div.buy-price span:nth-child(2){
+div.sell-price span:nth-child(2){
     font-size:25px;
    
     }

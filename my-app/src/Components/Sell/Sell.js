@@ -117,15 +117,15 @@ class Sell extends Component {
                     </div>
                     <div><p className="stock-name">{stockInApi.companyName}</p></div>
                 </div>
-                <div className="buy-defaut-price"><p>{stockInApi.price}$</p></div>
-                <div className="buy-quantity">
+                <div className="sell-defaut-price"><p>{stockInApi.price}$</p></div>
+                <div className="sell-quantity">
                     <button onClick={this.handleMinus}>-</button>
                     <span>{amount}</span>
                     <button onClick={this.handlePlus}>+</button>
                 </div>
-                <div className="buy-price">
-                    <span>Sell for {stockInApi.price}</span>
-                    <span>TotalPrice {stockInApi.price * amount}</span>
+                <div className="sell-price">
+                    <span></span>
+                    <span>Sell for {stockInApi.price * amount}</span>
                     <span>$</span>
                 </div>
                 <div className="sell-button">
