@@ -107,7 +107,8 @@ class Buy extends Component {
             })
         }
 
-        const response = await fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => (res.status === 201) ? result = true : alert("something wrong please try again later"))
+        const response = await fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options)
+            .then(res => (res.status === 201) ? result = true : alert("something wrong please try again later"))
             .catch((err) => console.log(err));
         console.log(result);
         return result;

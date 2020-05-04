@@ -22,11 +22,20 @@ class Account extends Component {
     }
 
     //  Starting point for obtaining user data and current quotes from the exchange per minut
-    componentDidMount() {
+    async componentDidMount() {
         this._isMounted = true;
-        this.getAccountData();  
+        await this.getAccountData();
         this.intervalGuardian = setInterval(this.getAccountData, 60000);
+        // this.state.data.forEach((stock) => {
+        //         this.deleteUsersStock(stock.id);
+        //     })
     }
+
+    // deleteUsersStock = id => {
+    //     fetch(`https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks/${id}`, {
+    //         method: "DELETE",
+    //     })
+    // }
 
     //  Turn off data acquisition per minute
     componentWillUnmount() {
@@ -98,6 +107,7 @@ class Account extends Component {
     }
 
     render() {
+
         const {globalAccountSum,actualData, data, currentPage, lastPage, pageSize, globalActualSum} = this.state;
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
         const globalDifference = globalActualSum - globalAccountSum ;                       //  Get difference in currency between the current and user amounts
