@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EachStock from './eachStock/EachStock';
+import EachStock from './EachStock/EachStock';
 import './stock.css';
 import Pagination from "react-pagination-library";
 import "react-pagination-library/build/css/index.css"; 

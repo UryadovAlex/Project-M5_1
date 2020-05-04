@@ -16,7 +16,6 @@ class EachStock extends Component {
         return (
         
             <Link className="linked" to={`/stock/${data.symbol}`}>
-
                 <div className="eachStock-row">
                     <div className="eachStock-row-symbol"> <div >{data.symbol}</div></div>
                     <div className="eachStock-row-name"><div>{data.name}</div></div>

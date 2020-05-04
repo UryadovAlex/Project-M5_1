@@ -5,6 +5,7 @@ import Stock from './Components/Stock/Stock';
 import Balance from './Components/Balance/Balance';
 import Header from './Components/Header/Header';
 import Buy from './Components/Buy/Buy';
+import Sell from './Components/Sell/Sell'
 import './index';
 
 class Application extends Component {
@@ -22,6 +23,7 @@ class Application extends Component {
                     <Stock/>
                 </Route>
                 <Route exact path='/stock/:id' component={Buy}></Route>
+                <Route exact path='/account/:id' component={Sell}></Route>
                 <Balance/>
             </Router>
         )
