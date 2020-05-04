@@ -125,7 +125,7 @@ class Sell extends Component {
                 </div>
                 <div className="sell-price">
                     <span></span>
-                    <span>Sell for {stockInApi.price * amount}</span>
+                    {stockInApi.price && <span>Sell for {stockInApi.price * amount}</span>}
                     <span>$</span>
                 </div>
                 <div className="sell-button">
